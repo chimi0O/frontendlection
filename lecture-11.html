@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лекция 11 — Flexbox и CSS Grid</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">webdesign_frontend</a>
+      <nav class="main-nav">
+        <a href="index.html">index</a>
+        <a href="module-1.html">module_1</a>
+        <a href="module-2.html">module_2</a>
+        <a href="module-3.html" class="active">module_3</a>
+        <a href="module-4.html">module_4</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="index.html">index</a><span class="sep">/</span>
+        <a href="module-3.html">module_3</a><span class="sep">/</span>lecture_11
+      </div>
+    </div>
+
+    <div class="lecture-head">
+      <div class="container">
+        <div class="l-label">module_3 / lecture_11</div>
+        <h1>Flexbox и CSS Grid</h1>
+        <p class="l-summary">Современные раскладки без хаков. Выравнивание по осям. Практика: карточки товаров и навигационные панели.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <article class="lecture-body">
+
+        <h2>Почему старые способы не работают</h2>
+
+        <p>Долгое время раскладку делали через float, position и таблицы. Это работало, но требовало хаков: clearfix, отрицательных отступов, фиксированных высот. Макеты ломались при изменении контента, а адаптивность превращалась в мучение.</p>
+
+        <p>Flexbox и CSS Grid решили эту проблему. Они созданы именно для раскладки и делают то, что раньше приходилось «выкручивать» вручную.</p>
+
+        <h2>Flexbox: одна ось</h2>
+
+        <p>Flexbox — модель для выравнивания элементов в одном направлении: по строке или по колонке. Идеален для навигации, карточек в ряд, кнопок с иконками.</p>
+
+        <div class="term">
+          <div class="t-name">Flexbox</div>
+          <div class="t-def">Модель раскладки, которая выстраивает элементы в строку или колонку и позволяет управлять их размером, порядком и выравниванием по главной и поперечной осям.</div>
+        </div>
+
+        <p>Ключевые свойства контейнера:</p>
+
+        <ul>
+          <li><strong>display: flex.</strong> Включает flex-контейнер.</li>
+          <li><strong>flex-direction.</strong> Направление: row (строка) или column (колонка).</li>
+          <li><strong>justify-content.</strong> Выравнивание по главной оси.</li>
+          <li><strong>align-items.</strong> Выравнивание по поперечной оси.</li>
+          <li><strong>gap.</strong> Расстояние между элементами.</li>
+          <li><strong>flex-wrap.</strong> Перенос элементов на новую строку.</li>
+        </ul>
+
+        <p>Свойства элементов:</p>
+
+        <ul>
+          <li><strong>flex-grow.</strong> Насколько элемент растягивается.</li>
+          <li><strong>flex-shrink.</strong> Насколько сжимается.</li>
+          <li><strong>flex-basis.</strong> Базовый размер.</li>
+          <li><strong>order.</strong> Порядок элемента.</li>
+        </ul>
+
+        <h2>CSS Grid: две оси</h2>
+
+        <p>Grid — модель для создания сеток: и по строкам, и по колонкам одновременно. Идеален для страничных макетов, галерей, дашбордов.</p>
+
+        <div class="term">
+          <div class="t-name">CSS Grid</div>
+          <div class="t-def">Двумерная модель раскладки, которая позволяет задавать строки и колонки одновременно и размещать элементы в ячейках сетки. Подходит для сложных макетов страниц.</div>
+        </div>
+
+        <p>Ключевые свойства:</p>
+
+        <ul>
+          <li><strong>display: grid.</strong> Включает grid-контейнер.</li>
+          <li><strong>grid-template-columns.</strong> Колонки (например, repeat(3, 1fr)).</li>
+          <li><strong>grid-template-rows.</strong> Строки.</li>
+          <li><strong>gap.</strong> Расстояние между ячейками.</li>
+          <li><strong>grid-column / grid-row.</strong> Позиция элемента в сетке.</li>
+          <li><strong>grid-template-areas.</strong> Именованные области для наглядных макетов.</li>
+        </ul>
+
+        <figure class="lecture-figure">
+          <img src="5.jpg" alt="Сравнение Flexbox и CSS Grid: Flexbox — одна ось, Grid — две оси">
+          
+        </figure>
+
+        <h2>Когда что использовать</h2>
+
+        <p>Простое правило:</p>
+
+        <ul>
+          <li><strong>Flexbox</strong> — когда элементы выстраиваются в одном направлении: меню, ряд кнопок, центрирование.</li>
+          <li><strong>Grid</strong> — когда нужна сетка из строк и колонок: страничный макет, галерея, дашборд.</li>
+          <li><strong>Вместе.</strong> Grid задаёт крупные области страницы, Flexbox выравнивает элементы внутри них.</li>
+        </ul>
+
+        <div class="callout">
+          <div class="t-title">Правило</div>
+          <p>Не пытайтесь сделать всё на Flexbox или всё на Grid. Они дополняют друг друга. Grid — для сетки страницы, Flexbox — для содержимого блоков.</p>
+        </div>
+
+        <h2>Пример: карточки товаров</h2>
+
+        <p>Карточки товаров — классическая задача для Grid. Контейнер задаёт сетку из трёх колонок, карточки автоматически выстраиваются в ряд и переносятся на новую строку при сужении экрана.</p>
+
+        <p>Внутри карточки используется Flexbox: изображение, заголовок, цена и кнопка выстраиваются в колонку, а кнопка прижимается к низу через <code>margin-top: auto</code>.</p>
+
+        <h2>Пример: навигационная панель</h2>
+
+        <p>Навигация — задача для Flexbox. Логотип слева, меню справа, всё выровнено по центру по вертикали. Свойство <code>justify-content: space-between</code> разводит логотип и меню по краям, <code>align-items: center</code> выравнивает по вертикали.</p>
+
+        <p>При адаптации под мобильный меню может перестраиваться в колонку через <code>flex-direction: column</code> или скрываться под кнопку-бургер.</p>
+
+        <div class="callout">
+          <div class="t-title">Для рекламы</div>
+          <p>Flexbox и Grid делают макет гибким. Дизайнер, который понимает эти модели, проектирует раскладки, которые легко верстаются и адаптируются. А ещё — может сам собрать лендинг без разработчика.</p>
+        </div>
+
+        <h2>Итог</h2>
+
+        <p>Flexbox и Grid — современный стандарт раскладки. Flexbox выравнивает элементы по одной оси, Grid строит сетку по двум. Вместе они позволяют создавать сложные адаптивные макеты без хаков.</p>
+
+      </article>
+
+      <nav class="lecture-nav">
+        <a href="lecture-10.html">
+          <span class="dir">← back</span>
+          <span class="name">lecture_10 / CSS3: стилизация интерфейса</span>
+        </a>
+        <a href="lecture-12.html" class="next">
+          <span class="dir">next →</span>
+          <span class="name">lecture_12 / Адаптивная вёрстка и медиа-запросы</span>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© Курс «Веб-дизайн и Frontend-разработка»</span>
+      <span><a href="index.html">index</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лекция 13 — JavaScript и анимации</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">webdesign_frontend</a>
+      <nav class="main-nav">
+        <a href="index.html">index</a>
+        <a href="module-1.html">module_1</a>
+        <a href="module-2.html">module_2</a>
+        <a href="module-3.html" class="active">module_3</a>
+        <a href="module-4.html">module_4</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="index.html">index</a><span class="sep">/</span>
+        <a href="module-3.html">module_3</a><span class="sep">/</span>lecture_13
+      </div>
+    </div>
+
+    <div class="lecture-head">
+      <div class="container">
+        <div class="l-label">module_3 / lecture_13</div>
+        <h1>JavaScript и анимации</h1>
+        <p class="l-summary">События, клики, ховеры. Готовые библиотеки для слайдеров, табов, модальных окон и параллакс-эффектов.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <article class="lecture-body">
+
+        <h2>Зачем дизайнеру JavaScript</h2>
+
+        <p>HTML задаёт структуру, CSS — внешний вид, JavaScript — поведение. Он отвечает на вопрос «что происходит, когда пользователь что-то делает»: кликает, прокручивает, вводит текст.</p>
+
+        <p>Дизайнеру не обязательно писать сложные скрипты. Но понимание основ JS помогает:</p>
+
+        <ul>
+          <li>Проектировать реалистичные интерактивные сценарии.</li>
+          <li>Говорить с разработчиком на одном языке.</li>
+          <li>Подключать готовые библиотеки без помощи.</li>
+          <li>Понимать, что технически возможно, а что — нет.</li>
+        </ul>
+
+        <h2>Базовые понятия</h2>
+
+        <p>JavaScript работает с тремя вещами: <strong>элементами</strong> (что), <strong>событиями</strong> (когда) и <strong>действиями</strong> (что сделать).</p>
+
+        <div class="term">
+          <div class="t-name">Событие (Event)</div>
+          <div class="t-def">Действие пользователя или браузера, на которое может реагировать JavaScript: клик, наведение, прокрутка, отправка формы, загрузка страницы.</div>
+        </div>
+
+        <p>Основные события:</p>
+
+        <ul>
+          <li><strong>click</strong> — клик по элементу.</li>
+          <li><strong>mouseover / mouseout</strong> — наведение и уход курсора.</li>
+          <li><strong>scroll</strong> — прокрутка страницы.</li>
+          <li><strong>submit</strong> — отправка формы.</li>
+          <li><strong>input</strong> — ввод текста в поле.</li>
+        </ul>
+
+        <p>Простейший пример: найти кнопку и повесить на неё обработчик клика. При клике — выполнить действие (например, показать модальное окно).</p>
+
+        <h2>Что делает JavaScript на рекламном сайте</h2>
+
+        <ul>
+          <li><strong>Слайдеры.</strong> Прокрутка баннеров, отзывов, кейсов.</li>
+          <li><strong>Табы и аккордеоны.</strong> Переключение контента без перезагрузки.</li>
+          <li><strong>Модальные окна.</strong> Формы заявки, попапы, уведомления.</li>
+          <li><strong>Валидация форм.</strong> Проверка полей до отправки.</li>
+          <li><strong>Анимации при скролле.</strong> Появление блоков, параллакс.</li>
+          <li><strong>Калькуляторы.</strong> Расчёт стоимости, подбор конфигурации.</li>
+          <li><strong>Аналитика.</strong> Отправка событий в Метрику и Google Analytics.</li>
+        </ul>
+
+        <h2>Готовые библиотеки</h2>
+
+        <p>Писать всё с нуля не нужно. Для типовых задач есть проверенные библиотеки, которые подключаются одной строкой.</p>
+
+        <div class="term">
+          <div class="t-name">Библиотека</div>
+          <div class="t-def">Готовый набор кода, который решает типовую задачу: слайдер, анимация, модальное окно. Подключается к странице и настраивается через параметры.</div>
+        </div>
+
+        <p>Популярные библиотеки:</p>
+
+        <ul>
+          <li><strong>Swiper.js</strong> — слайдеры и карусели. Гибкий, адаптивный, поддерживает тач.</li>
+          <li><strong>GSAP</strong> — мощная анимация: таймлайны, скролл-эффекты, параллакс.</li>
+          <li><strong>AOS</strong> — анимация появления блоков при скролле.</li>
+          <li><strong>Fancybox / Lightbox</strong> — галереи и модальные окна.</li>
+          <li><strong>IMask</strong> — маски для полей ввода (телефон, дата).</li>
+        </ul>
+
+        <div class="callout">
+          <div class="t-title">Правило</div>
+          <p>Не подключайте тяжёлую библиотеку ради одной маленькой анимации. Каждый килобайт JS замедляет загрузку. Сначала проверьте, можно ли сделать то же на CSS.</p>
+        </div>
+
+        <h2>CSS-анимации vs JavaScript</h2>
+
+        <p>Не всё, что двигается, нужно делать на JS. CSS-анимации (transition, @keyframes) проще, быстрее и не грузят процессор так, как скрипты.</p>
+
+        <ul>
+          <li><strong>CSS</strong> — для ховеров, плавных переходов, простых появлений.</li>
+          <li><strong>JS</strong> — для сложных сценариев: зависимость от скролла, цепочки событий, интерактивные калькуляторы.</li>
+        </ul>
+
+        <p>Хорошая практика: сначала пытаться решить задачу на CSS. Если не получается — подключать JS.</p>
+
+        <h2>Производительность</h2>
+
+        <p>Анимации и скрипты влияют на скорость. Что важно:</p>
+
+        <ul>
+          <li><strong>Анимировать transform и opacity.</strong> Они не вызывают пересчёт макета.</li>
+          <li><strong>Не анимировать width, height, top, left.</strong> Это дорого для браузера.</li>
+          <li><strong>Использовать will-change</strong> осознанно — только там, где действительно нужно.</li>
+          <li><strong>Отключать анимации</strong> при prefers-reduced-motion для доступности.</li>
+          <li><strong>Ленивая загрузка JS.</strong> defer и async для скриптов.</li>
+        </ul>
+
+        <div class="callout">
+          <div class="t-title">Для рекламы</div>
+          <p>Интерактивность повышает вовлечённость, но только если она не мешает. Слайдер, который «дёргается», или попап, который перекрывает контент, снижают конверсию. Интерактив должен помогать, а не раздражать.</p>
+        </div>
+
+        <h2>Итог</h2>
+
+        <p>JavaScript добавляет странице поведение. Дизайнеру не нужно быть программистом, но понимание событий, готовых библиотек и разницы между CSS- и JS-анимациями помогает проектировать реалистичные интерфейсы и не создавать «дизайн, который невозможно реализовать».</p>
+
+      </article>
+
+      <nav class="lecture-nav">
+        <a href="lecture-12.html">
+          <span class="dir">← back</span>
+          <span class="name">lecture_12 / Адаптивная вёрстка</span>
+        </a>
+        <a href="module-3.html" class="next">
+          <span class="dir">module →</span>
+          <span class="name">module_3 / все лекции</span>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© Курс «Веб-дизайн и Frontend-разработка»</span>
+      <span><a href="index.html">index</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>

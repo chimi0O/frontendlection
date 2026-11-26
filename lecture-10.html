@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лекция 10 — CSS3: стилизация интерфейса</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">webdesign_frontend</a>
+      <nav class="main-nav">
+        <a href="index.html">index</a>
+        <a href="module-1.html">module_1</a>
+        <a href="module-2.html">module_2</a>
+        <a href="module-3.html" class="active">module_3</a>
+        <a href="module-4.html">module_4</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="index.html">index</a><span class="sep">/</span>
+        <a href="module-3.html">module_3</a><span class="sep">/</span>lecture_10
+      </div>
+    </div>
+
+    <div class="lecture-head">
+      <div class="container">
+        <div class="l-label">module_3 / lecture_10</div>
+        <h1>CSS3: стилизация интерфейса</h1>
+        <p class="l-summary">Селекторы, каскад и специфичность. Блочная модель. Цвет, фон, границы, типографика через CSS.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <article class="lecture-body">
+
+        <h2>CSS — язык визуального слоя</h2>
+
+        <p>CSS (Cascading Style Sheets) описывает, <strong>как выглядит</strong> HTML-разметка. HTML говорит «это заголовок», CSS говорит «этот заголовок — 32px, жирный, с отступом снизу 16px».</p>
+
+        <p>CSS отделяет содержание от представления. Один и тот же HTML можно оформить как светлую тему, тёмную тему или что угодно ещё — без изменения разметки.</p>
+
+        <h2>Селекторы</h2>
+
+        <p>Селектор — правило, которое указывает, к каким элементам применить стиль. Основные типы:</p>
+
+        <ul>
+          <li><strong>По тегу.</strong> <code>p { color: #111; }</code> — все абзацы.</li>
+          <li><strong>По классу.</strong> <code>.card { border: 1px solid; }</code> — все элементы с классом card.</li>
+          <li><strong>По идентификатору.</strong> <code>#header { ... }</code> — один уникальный элемент.</li>
+          <li><strong>По атрибуту.</strong> <code>input[type="email"] { ... }</code>.</li>
+          <li><strong>Псевдоклассы.</strong> <code>a:hover { ... }</code> — состояние наведения.</li>
+        </ul>
+
+        <div class="term">
+          <div class="t-name">Селектор</div>
+          <div class="t-def">Часть CSS-правила, которая определяет, к каким элементам HTML применяются стили. Может быть по тегу, классу, идентификатору, атрибуту или псевдоклассу.</div>
+        </div>
+
+        <h2>Каскад и специфичность</h2>
+
+        <p>CSS — каскадные таблицы стилей. Если к элементу применяется несколько правил, побеждает то, у которого выше <strong>специфичность</strong>. Если специфичность равна — побеждает то, что написано ниже.</p>
+
+        <p>Порядок специфичности (от низкого к высокому):</p>
+
+        <ul>
+          <li>Тег: <code>p</code> — 1</li>
+          <li>Класс: <code>.card</code> — 10</li>
+          <li>ID: <code>#header</code> — 100</li>
+          <li>Инлайн-стиль: <code>style="..."</code> — 1000</li>
+        </ul>
+
+        <div class="callout">
+          <div class="t-title">Правило</div>
+          <p>Не боритесь со специфичностью через <code>!important</code>. Если приходится — скорее всего, архитектура стилей сломана. Лучше использовать БЭМ или другой подход к именованию классов.</p>
+        </div>
+
+        <h2>Блочная модель</h2>
+
+        <p>Каждый элемент в CSS — прямоугольник, состоящий из четырёх слоёв: content (контент), padding (внутренний отступ), border (рамка), margin (внешний отступ).</p>
+
+        <div class="term">
+          <div class="t-name">Box Model</div>
+          <div class="t-def">Модель, описывающая элемент как прямоугольник с контентом, внутренними отступами (padding), рамкой (border) и внешними отступами (margin). Основа всей вёрстки.</div>
+        </div>
+
+        <figure class="lecture-figure">
+          <img src="4.jpg" alt="Схема блочной модели CSS: content, padding, border, margin">
+          <figcaption>Блочная модель: content — содержимое, padding — внутренний отступ, border — рамка, margin — внешний отступ. При box-sizing: border-box ширина включает padding и border.</figcaption>
+        </figure>
+
+        <p>По умолчанию <code>box-sizing: content-box</code>: width задаёт только ширину контента, а padding и border добавляются сверху. Это часто ломает макеты. Поэтому в современной вёрстке почти всегда используют:</p>
+
+        <div class="term">
+          <div class="t-name">box-sizing: border-box</div>
+          <div class="t-def">Режим, при котором width и height включают padding и border. Упрощает расчёты и делает макет предсказуемым. Стандарт современной вёрстки.</div>
+        </div>
+
+        <h2>Цвет, фон, границы</h2>
+
+        <p>Цвет задаётся разными способами: HEX (<code>#4ade80</code>), RGB, HSL, именованные цвета. Для рекламных сайтов важно соблюдать контраст (WCAG 4.5:1 для текста).</p>
+
+        <ul>
+          <li><strong>color.</strong> Цвет текста.</li>
+          <li><strong>background.</strong> Фон: цвет, изображение, градиент.</li>
+          <li><strong>border.</strong> Рамка: толщина, стиль, цвет.</li>
+          <li><strong>border-radius.</strong> Скругление углов.</li>
+          <li><strong>box-shadow.</strong> Тень.</li>
+        </ul>
+
+        <h2>Типографика через CSS</h2>
+
+        <p>Основные свойства для работы с текстом:</p>
+
+        <ul>
+          <li><strong>font-family.</strong> Гарнитура (системные шрифты или веб-шрифты).</li>
+          <li><strong>font-size.</strong> Размер (минимум 16px для основного текста).</li>
+          <li><strong>font-weight.</strong> Насыщенность (400 — обычный, 700 — жирный).</li>
+          <li><strong>line-height.</strong> Межстрочный интервал (1.4–1.6 для читаемости).</li>
+          <li><strong>letter-spacing.</strong> Межбуквенное расстояние.</li>
+          <li><strong>text-align.</strong> Выравнивание текста.</li>
+        </ul>
+
+        <div class="callout">
+          <div class="t-title">Для рекламы</div>
+          <p>Понимание CSS позволяет дизайнеру говорить с разработчиком на одном языке. А ещё — быстро вносить правки в готовый лендинг: поменять цвет кнопки, поправить отступ, увеличить заголовок.</p>
+        </div>
+
+        <h2>Итог</h2>
+
+        <p>CSS — язык визуального слоя. Селекторы определяют, к чему применять стили, каскад и специфичность решают конфликты, блочная модель задаёт геометрию, а свойства цвета и типографики — внешний вид. Без понимания этих основ невозможно ни спроектировать макет, который легко верстается, ни собрать его самостоятельно.</p>
+
+      </article>
+
+      <nav class="lecture-nav">
+        <a href="lecture-09.html">
+          <span class="dir">← back</span>
+          <span class="name">lecture_09 / HTML5: структура и семантика</span>
+        </a>
+        <a href="lecture-11.html" class="next">
+          <span class="dir">next →</span>
+          <span class="name">lecture_11 / Flexbox и CSS Grid</span>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© Курс «Веб-дизайн и Frontend-разработка»</span>
+      <span><a href="index.html">index</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>

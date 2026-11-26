@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лекция 15 — Оптимизация, веб-аналитика и SEO</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">webdesign_frontend</a>
+      <nav class="main-nav">
+        <a href="index.html">index</a>
+        <a href="module-1.html">module_1</a>
+        <a href="module-2.html">module_2</a>
+        <a href="module-3.html">module_3</a>
+        <a href="module-4.html" class="active">module_4</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="index.html">index</a><span class="sep">/</span>
+        <a href="module-4.html">module_4</a><span class="sep">/</span>lecture_15
+      </div>
+    </div>
+
+    <div class="lecture-head">
+      <div class="container">
+        <div class="l-label">module_4 / lecture_15</div>
+        <h1>Оптимизация, веб-аналитика и SEO</h1>
+        <p class="l-summary">Скорость загрузки, Core Web Vitals. Яндекс.Метрика, Google Analytics, пиксели соцсетей. Тегирование событий и базовая SEO-подготовка.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <article class="lecture-body">
+
+        <h2>Почему оптимизация важна</h2>
+
+        <p>Сайт, который долго грузится, теряет пользователей ещё до того, как они увидят первый экран. Исследования показывают: каждая дополнительная секунда загрузки снижает конверсию на несколько процентов. Для рекламного трафика это прямые деньги.</p>
+
+        <p>Оптимизация — не «техническая полировка» в конце проекта, а часть дизайна. Скорость загрузки зависит от того, как спроектирован сайт: сколько изображений, какие шрифты, сколько скриптов.</p>
+
+        <h2>Core Web Vitals</h2>
+
+        <p>Основные метрики, на которые смотрят инструменты вроде Google PageSpeed Insights и Lighthouse:</p>
+
+        <ul>
+          <li><strong>LCP (Largest Contentful Paint).</strong> Время до отрисовки самого крупного элемента. Должно быть менее 2.5 секунд.</li>
+          <li><strong>FID (First Input Delay).</strong> Задержка до реакции на первое действие пользователя.</li>
+          <li><strong>CLS (Cumulative Layout Shift).</strong> Смещение макета при загрузке. Должно быть близко к нулю.</li>
+        </ul>
+
+        <div class="term">
+          <div class="t-name">Core Web Vitals</div>
+          <div class="t-def">Набор метрик Google, оценивающих пользовательский опыт: скорость загрузки (LCP), интерактивность (FID) и стабильность макета (CLS). Влияют на позиции в поиске.</div>
+        </div>
+
+        <p>Что помогает ускорить сайт:</p>
+
+        <ul>
+          <li><strong>Оптимизация изображений.</strong> WebP/AVIF, сжатие, srcset, lazy loading.</li>
+          <li><strong>Минификация.</strong> Сжатие CSS и JS, удаление лишнего кода.</li>
+          <li><strong>Кэширование.</strong> Браузерное и серверное.</li>
+          <li><strong>CDN.</strong> Раздача статики с серверов, близких к пользователю.</li>
+          <li><strong>Отложенная загрузка.</strong> defer и async для скриптов, lazy для изображений.</li>
+          <li><strong>Ограничение шрифтов.</strong> Каждый веб-шрифт — дополнительный запрос.</li>
+        </ul>
+
+        <div class="callout">
+          <div class="t-title">Правило</div>
+          <p>Изображения — главный источник веса страницы. Одна неоптимизированная картинка на 3 МБ может свести на нет всю остальную оптимизацию. Начинайте с графики.</p>
+        </div>
+
+        <h2>Веб-аналитика</h2>
+
+        <p>Аналитика — способ понять, что происходит на сайте: сколько людей пришло, откуда, что они делают, где уходят. Без аналитики реклама работает «вслепую».</p>
+
+        <div class="term">
+          <div class="t-name">Веб-аналитика</div>
+          <div class="t-def">Сбор и анализ данных о поведении пользователей: источники трафика, просмотры, конверсии, отказы. Помогает оценивать эффективность рекламы и улучшать продукт.</div>
+        </div>
+
+        <p>Основные инструменты:</p>
+
+        <ul>
+          <li><strong>Яндекс.Метрика.</strong> Популярна в России: вебвизор, карты кликов, цели, сегменты.</li>
+          <li><strong>Google Analytics 4.</strong> Международный стандарт: события, воронки, аудитории.</li>
+          <li><strong>Пиксели соцсетей.</strong> VK Pixel, Facebook Pixel, TikTok Pixel — для ретаргетинга и оптимизации кампаний.</li>
+        </ul>
+
+        <h2>Тегирование событий</h2>
+
+        <p>Событие — действие пользователя, которое нужно отследить: клик по кнопке, отправка формы, просмотр видео, скролл до блока. Тегирование — настройка отслеживания этих событий.</p>
+
+        <p>Что обычно тегируют на рекламном сайте:</p>
+
+        <ul>
+          <li><strong>Клики по кнопкам CTA.</strong> «Оставить заявку», «Купить», «Позвонить».</li>
+          <li><strong>Отправку форм.</strong> Успешная и неуспешная.</li>
+          <li><strong>Звонки.</strong> Клики по номеру телефона.</li>
+          <li><strong>Скролл.</strong> Дочитывание страницы до конца.</li>
+          <li><strong>Время на странице.</strong> Вовлечённость.</li>
+        </ul>
+
+        <div class="term">
+          <div class="t-name">Цель (Goal)</div>
+          <div class="t-def">Событие или действие пользователя, которое считается полезным для бизнеса: отправка заявки, звонок, покупка. Настраивается в аналитике для оценки конверсии.</div>
+        </div>
+
+        <h2>SEO: базовые принципы</h2>
+
+        <p>SEO (Search Engine Optimization) — оптимизация сайта под поисковые системы. Для рекламного сайта SEO важно, потому что органический трафик бесплатный и долгосрочный.</p>
+
+        <p>Что влияет на SEO:</p>
+
+        <ul>
+          <li><strong>Семантическая разметка.</strong> Заголовки, alt, структура.</li>
+          <li><strong>Скорость загрузки.</strong> Core Web Vitals.</li>
+          <li><strong>Мобильная адаптивность.</strong> Mobile-first индексация.</li>
+          <li><strong>Контент.</strong> Релевантность запросам, уникальность.</li>
+          <li><strong>Ссылочная масса.</strong> Внешние ссылки на сайт.</li>
+          <li><strong>Технические факторы.</strong> robots.txt, sitemap, канонические URL, HTTPS.</li>
+        </ul>
+
+        <h2>Подготовка к запуску</h2>
+
+        <p>Перед запуском рекламной кампании стоит проверить:</p>
+
+        <ul>
+          <li><strong>Скорость.</strong> PageSpeed Insights, Lighthouse.</li>
+          <li><strong>Адаптивность.</strong> Реальные устройства, а не только эмулятор.</li>
+          <li><strong>Ссылки.</strong> Нет битых ссылок и 404.</li>
+          <li><strong>Формы.</strong> Работают, валидируют, отправляют уведомления.</li>
+          <li><strong>Аналитика.</strong> Счётчики установлены, цели настроены, события срабатывают.</li>
+          <li><strong>SEO.</strong> Title, description, alt, семантика.</li>
+          <li><strong>Безопасность.</strong> HTTPS, защита форм от спама.</li>
+        </ul>
+
+        <div class="callout">
+          <div class="t-title">Для рекламы</div>
+          <p>Запуск без аналитики — это деньги на ветер. Если вы не видите, откуда приходят заявки и что происходит на сайте, вы не можете оптимизировать кампанию. Аналитика и тегирование — обязательная часть запуска.</p>
+        </div>
+
+        <h2>Итог</h2>
+
+        <p>Оптимизация, аналитика и SEO — три столпа запуска. Скорость влияет на конверсию и позиции, аналитика показывает, что работает, SEO приводит бесплатный трафик. Вместе они делают сайт не просто красивым, а эффективным инструментом бизнеса.</p>
+
+      </article>
+
+      <nav class="lecture-nav">
+        <a href="lecture-14.html">
+          <span class="dir">← back</span>
+          <span class="name">lecture_14 / No-Code и CMS</span>
+        </a>
+        <a href="lecture-16.html" class="next">
+          <span class="dir">next →</span>
+          <span class="name">lecture_16 / Защита проекта и тренды</span>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© Курс «Веб-дизайн и Frontend-разработка»</span>
+      <span><a href="index.html">index</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>

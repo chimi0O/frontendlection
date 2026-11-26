@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Лекция 09 — HTML5: структура и семантика</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">webdesign_frontend</a>
+      <nav class="main-nav">
+        <a href="index.html">index</a>
+        <a href="module-1.html">module_1</a>
+        <a href="module-2.html">module_2</a>
+        <a href="module-3.html" class="active">module_3</a>
+        <a href="module-4.html">module_4</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="index.html">index</a><span class="sep">/</span>
+        <a href="module-3.html">module_3</a><span class="sep">/</span>lecture_09
+      </div>
+    </div>
+
+    <div class="lecture-head">
+      <div class="container">
+        <div class="l-label">module_3 / lecture_09</div>
+        <h1>HTML5: структура и семантика</h1>
+        <p class="l-summary">Каркас документа, семантические теги и их влияние на SEO. Ссылки, изображения, формы. Доступность разметки.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <article class="lecture-body">
+
+        <h2>HTML — это структура, а не внешний вид</h2>
+
+        <p>HTML (HyperText Markup Language) описывает структуру страницы. Он не задаёт внешний вид (это делает CSS) и не добавляет поведение (это JavaScript). HTML отвечает на вопрос: <strong>что здесь находится</strong> — заголовок, абзац, список, изображение, форма.</p>
+
+        <p>Браузер читает HTML сверху вниз и строит из него DOM-дерево — структуру, с которой потом работают стили и скрипты. Если разметка «грязная», всё остальное страдает: CSS сложнее писать, JavaScript — искать элементы, а поисковики — понимать контент.</p>
+
+        <h2>Каркас документа</h2>
+
+        <p>Минимальный HTML-документ выглядит так:</p>
+
+        <div class="term">
+          <div class="t-name">Каркас документа</div>
+          <div class="t-def">Обязательные элементы: &lt;!DOCTYPE html&gt;, &lt;html lang="ru"&gt;, &lt;head&gt; с метаданными и подключением стилей, &lt;body&gt; с видимым контентом.</div>
+        </div>
+
+        <ul>
+          <li><strong>&lt;!DOCTYPE html&gt;</strong> — сообщает браузеру, что это HTML5.</li>
+          <li><strong>&lt;html lang="ru"&gt;</strong> — корневой элемент, язык страницы.</li>
+          <li><strong>&lt;head&gt;</strong> — метаданные: кодировка, viewport, title, подключение CSS.</li>
+          <li><strong>&lt;body&gt;</strong> — всё, что видит пользователь.</li>
+        </ul>
+
+        <h2>Семантические теги</h2>
+
+        <p>Семантика — это смысл. Семантические теги описывают роль блока, а не его внешний вид. Вместо &lt;div&gt; для всего подряд используют &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, &lt;article&gt;, &lt;footer&gt;.</p>
+
+        <div class="term">
+          <div class="t-name">Семантическая вёрстка</div>
+          <div class="t-def">Использование HTML-тегов по их смыслу: header для шапки, nav для навигации, article для самостоятельной единицы контента, footer для подвала. Улучшает доступность и SEO.</div>
+        </div>
+
+        <p>Основные теги:</p>
+
+        <ul>
+          <li><strong>&lt;header&gt;</strong> — шапка страницы или раздела.</li>
+          <li><strong>&lt;nav&gt;</strong> — блок навигации.</li>
+          <li><strong>&lt;main&gt;</strong> — основное содержимое (один на страницу).</li>
+          <li><strong>&lt;section&gt;</strong> — смысловой раздел.</li>
+          <li><strong>&lt;article&gt;</strong> — самостоятельная единица контента.</li>
+          <li><strong>&lt;aside&gt;</strong> — боковой блок.</li>
+          <li><strong>&lt;footer&gt;</strong> — подвал.</li>
+        </ul>
+
+        <h2>Семантика и SEO</h2>
+
+        <p>Поисковые системы читают HTML так же, как скринридеры: по тегам. Семантическая разметка помогает роботам понять, где заголовок, где основной текст, а где навигация. Это влияет на сниппеты, индексацию и поведенческие факторы.</p>
+
+        <p>Что важно для рекламного сайта:</p>
+
+        <ul>
+          <li><strong>Один H1.</strong> Главный заголовок страницы — один и содержит ключевой запрос.</li>
+          <li><strong>Иерархия H2–H6.</strong> Подзаголовки выстроены по уровням.</li>
+          <li><strong>Alt у изображений.</strong> Описание картинок для поиска и доступности.</li>
+          <li><strong>Ссылки с понятным текстом.</strong> Не «нажмите здесь», а «оставить заявку».</li>
+          <li><strong>Микроразметка.</strong> Schema.org для товаров, отзывов, организаций.</li>
+        </ul>
+
+        <div class="callout">
+          <div class="t-title">Важно</div>
+          <p>Семантика — не «для галочки». Правильная разметка помогает и людям (скринридеры, клавиатура), и роботам (SEO), и разработчикам (понятный код).</p>
+        </div>
+
+        <h2>Ссылки</h2>
+
+        <p>Ссылка — ключевой элемент веба. Тег &lt;a&gt; с атрибутом href. Важные нюансы:</p>
+
+        <ul>
+          <li><strong>Текст ссылки.</strong> Должен объяснять, куда она ведёт.</li>
+          <li><strong>target="_blank".</strong> Открывает в новой вкладке — использовать осознанно.</li>
+          <li><strong>rel="noopener".</strong> Безопасность при target="_blank".</li>
+          <li><strong>Доступность.</strong> Ссылка доступна с клавиатуры и имеет видимый фокус.</li>
+        </ul>
+
+        <h2>Изображения</h2>
+
+        <p>Тег &lt;img&gt; с обязательным атрибутом alt. Изображение — контент, а не украшение. Что важно:</p>
+
+        <ul>
+          <li><strong>alt.</strong> Описание для скринридеров и поиска.</li>
+          <li><strong>width и height.</strong> Предотвращают «прыжки» контента при загрузке.</li>
+          <li><strong>loading="lazy".</strong> Ленивая загрузка для изображений ниже первого экрана.</li>
+          <li><strong>srcset.</strong> Разные версии для разных экранов.</li>
+          <li><strong>Формат.</strong> WebP/AVIF для фото, SVG для иконок.</li>
+        </ul>
+
+        <h2>Формы</h2>
+
+        <p>Форма — главный инструмент конверсии на рекламном сайте. Тег &lt;form&gt; с полями &lt;input&gt;, &lt;textarea&gt;, &lt;select&gt; и кнопкой &lt;button&gt;.</p>
+
+        <p>Что важно для форм:</p>
+
+        <ul>
+          <li><strong>Label.</strong> Каждое поле — с подписью &lt;label&gt;.</li>
+          <li><strong>Типы input.</strong> email, tel, number — для мобильных клавиатур.</li>
+          <li><strong>Валидация.</strong> required, pattern, minlength — на стороне браузера.</li>
+          <li><strong>Доступность.</strong> Поля доступны с клавиатуры, ошибки читаются скринридером.</li>
+          <li><strong>Минимум полей.</strong> Каждое лишнее поле снижает конверсию.</li>
+        </ul>
+
+        <div class="callout">
+          <div class="t-title">Для рекламы</div>
+          <p>HTML — фундамент. Дизайнер, который понимает разметку, проектирует макеты, которые проще верстать, и не создаёт «дизайн, который невозможно реализовать».</p>
+        </div>
+
+        <h2>Итог</h2>
+
+        <p>HTML5 — язык структуры. Семантические теги, правильные ссылки, изображения с alt и доступные формы — база, без которой не работает ни SEO, ни конверсия, ни доступность.</p>
+
+      </article>
+
+      <nav class="lecture-nav">
+        <a href="module-3.html">
+          <span class="dir">← back</span>
+          <span class="name">module_3 / список лекций</span>
+        </a>
+        <a href="lecture-10.html" class="next">
+          <span class="dir">next →</span>
+          <span class="name">lecture_10 / CSS3: стилизация интерфейса</span>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© Курс «Веб-дизайн и Frontend-разработка»</span>
+      <span><a href="index.html">index</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>
